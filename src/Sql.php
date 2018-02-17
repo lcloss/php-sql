@@ -3,16 +3,16 @@
 namespace LCloss\Sql;
 
 class Sql {
-    
+
     private $config;
     private $conn;
     private $stmt;
     
     public function __construct($config = [
-        'dbdriver' => '',
-        'dbhost' => '',
-        'dbname' => '',
-        'dbuser' => '',
+        'dbdriver' => '', 
+        'dbhost' => '', 
+        'dbname' => '', 
+        'dbuser' => '', 
         'dbpass' => '',
     ])
     {
@@ -42,7 +42,7 @@ class Sql {
                     $dsn,
                     $config['dbuser'],
                     $config['dbpass']
-                    );
+                );
                 break;
                 
             case 'mssql':
@@ -51,7 +51,7 @@ class Sql {
                     $dsn,
                     $config['dbuser'],
                     $config['dbpass']
-                    );
+                );
                 break;
                 
             case 'sqlite':
@@ -63,7 +63,7 @@ class Sql {
                 throw new \Exception("DB Driver " . $config['dbdriver'] . " is not defined." );
         }
     }
-    
+        
     private function _setParams($statement, $parameters = array())
     {
         
