@@ -3,16 +3,16 @@
 namespace LCloss\Sql;
 
 class Sql {
-
+    
     private $config;
     private $conn;
     private $stmt;
     
     public function __construct($config = [
-        'dbdriver' => '', 
-        'dbhost' => '', 
-        'dbname' => '', 
-        'dbuser' => '', 
+        'dbdriver' => '',
+        'dbhost' => '',
+        'dbname' => '',
+        'dbuser' => '',
         'dbpass' => '',
     ])
     {
@@ -42,7 +42,7 @@ class Sql {
                     $dsn,
                     $config['dbuser'],
                     $config['dbpass']
-                );
+                    );
                 break;
                 
             case 'mssql':
@@ -51,7 +51,7 @@ class Sql {
                     $dsn,
                     $config['dbuser'],
                     $config['dbpass']
-                );
+                    );
                 break;
                 
             case 'sqlite':
@@ -62,48 +62,47 @@ class Sql {
             default:
                 throw new \Exception("DB Driver " . $config['dbdriver'] . " is not defined." );
         }
-        
-        private function _setParams($statement, $parameters = array())
-        {
-            
-            foreach ($parameters as $key => $value) {
-                
-                $this->_bindParam($statement, $key, $value);
-                
-            }
-            
-        }
-        
-        private function _bindParam($statement, $key, $value)
-        {
-            
-            $statement->_bindParam($key, $value);
-            
-        }
-        
-        public function query($rawQuery, $params = array())
-        {
-            
-            $this->stmt = $this->conn->prepare($rawQuery);
-            
-            $this->_setParams($this->stmt, $params);
-            
-            $this->stmt->execute();
-            
-        }
-        
-        public function select($rawQuery, $params = array()):array
-        {
-            
-            $this->stmt = $this->conn->prepare($rawQuery);
-            
-            $this->_setParams($this->stmt, $params);
-            
-            $this->stmt->execute();
-            
-            return $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
-            
-        }
     }
     
+    private function _setParams($statement, $parameters = array())
+    {
+        
+        foreach ($parameters as $key => $value) {
+            
+            $this->_bindParam($statement, $key, $value);
+            
+        }
+        
+    }
+    
+    private function _bindParam($statement, $key, $value)
+    {
+        
+        $statement->_bindParam($key, $value);
+        
+    }
+    
+    public function query($rawQuery, $params = array())
+    {
+        
+        $this->stmt = $this->conn->prepare($rawQuery);
+        
+        $this->_setParams($this->stmt, $params);
+        
+        $this->stmt->execute();
+        
+    }
+    
+    public function select($rawQuery, $params = array()):array
+    {
+        
+        $this->stmt = $this->conn->prepare($rawQuery);
+        
+        $this->_setParams($this->stmt, $params);
+        
+        $this->stmt->execute();
+        
+        return $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
+        
+    }
 }
