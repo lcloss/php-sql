@@ -1,0 +1,24 @@
+{
+	"name" : "lcloss/php-sql",
+	"type" : "library",
+	"description" : "Simple SQL class to use with PHP",
+	"keywords" : [
+		"SQL", "database access", "database driver"
+	],
+	"homepage": "https://github.com/lcloss/php-sql",
+    "require": {
+        "php": ">=7.0"
+    },
+	"license" : "MIT",
+	"minimum-stability" : "dev",
+	"authors" : [{
+			"name" : "Luciano Closs",
+			"email" : "lcloss@gmail.com"
+		}
+	],
+    "autoload": {
+        "psr-0": {
+            "LCloss": "src/"
+        }
+    }
+}
