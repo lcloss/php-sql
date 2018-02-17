@@ -17,8 +17,8 @@
 		}
 	],
     "autoload": {
-        "psr-0": {
-            "LCloss": "src/"
+        "psr-4": {
+            "LCloss\\Sql\\": "src/"
         }
     }
 }
