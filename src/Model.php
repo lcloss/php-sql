@@ -78,14 +78,14 @@ class Model {
     public static function getMsgError()
     {
         $msg = ( isset($_SESSION[Model::MSG_ERROR]) && $_SESSION[Model::MSG_ERROR] != '' ? $_SESSION[Model::MSG_ERROR] : '' );
-        User::clearMsgError();
+        self::clearMsgError();
         return $msg;
     }
     
     public static function getMsgSuccess()
     {
         $msg = ( isset($_SESSION[Model::MSG_SUCCESS]) && $_SESSION[Model::MSG_SUCCESS] != '' ? $_SESSION[Model::MSG_SUCCESS] : '' );
-        User::clearMsgSuccess();
+        self::clearMsgSuccess();
         return $msg;
     }
 }
