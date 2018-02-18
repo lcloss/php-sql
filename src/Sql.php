@@ -105,4 +105,9 @@ class Sql {
         return $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
         
     }
+    
+    public function getLastInsertedId()
+    {
+        return $this->conn->lastInsertId();
+    }
 }
