@@ -3,6 +3,9 @@
 namespace LCloss\Sql;
 
 class Model {
+    const MSG_ERROR = 'MSG_ERROR';
+    const MSG_SUCCESS = 'MSG_SUCCESS';
+    
     private $values =  [];
 
     /**
@@ -51,5 +54,38 @@ class Model {
     {
         return $this->values;
     }
+ 
+    public static function clearMsgError()
+    {
+        $_SESSION[Model::MSG_ERROR] = NULL;
+    }
     
+    public static function clearMsgSuccess()
+    {
+        $_SESSION[Model::MSG_SUCCESS] = NULL;
+    }
+    
+    public static function setMsgError($msg)
+    {
+        $_SESSION[Model::MSG_ERROR] = $msg;
+    }
+    
+    public static function setMsgSuccess($msg)
+    {
+        $_SESSION[Model::MSG_SUCCESS] = $msg;
+    }
+    
+    public static function getMsgError()
+    {
+        $msg = ( isset($_SESSION[Model::MSG_ERROR]) && $_SESSION[Model::MSG_ERROR] != '' ? $_SESSION[Model::MSG_ERROR] : '' );
+        User::clearMsgError();
+        return $msg;
+    }
+    
+    public static function getMsgSuccess()
+    {
+        $msg = ( isset($_SESSION[Model::MSG_SUCCESS]) && $_SESSION[Model::MSG_SUCCESS] != '' ? $_SESSION[Model::MSG_SUCCESS] : '' );
+        User::clearMsgSuccess();
+        return $msg;
+    }
 }
