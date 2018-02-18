@@ -78,7 +78,7 @@ class Sql {
     private function _bindParam($statement, $key, $value)
     {
         
-        $statement->_bindParam($key, $value);
+        $statement->bindParam($key, $value);
         
     }
     
