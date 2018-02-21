@@ -56,13 +56,14 @@ class Sql {
                 $this->conn = new \PDO(
                     $dsn,
                     $config['dbuser'],
-                    $config['dbpass']
+                    $config['dbpass'],
+                    $options
                 );
                 break;
                 
             case 'sqlite':
                 $dsn = "sqlite2:".$config['dbname'];
-                $this->conn = new \PDO($dsn);
+                $this->conn = new \PDO($dsn, $options);
                 break;
                 
             default:
