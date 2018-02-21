@@ -35,14 +35,20 @@ class Sql {
             }
         }
         
+        $options = [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_EMULATE_PREPARES => false
+        ];
+        
         switch ($config['dbdriver']) {
             case 'mysql':
                 $dsn = "mysql:dbname=".$config['dbname'].";host=".$config['dbhost'];
                 $this->conn = new \PDO(
                     $dsn,
                     $config['dbuser'],
-                    $config['dbpass']
-                );
+                    $config['dbpass'],
+                    $options
+                    );
                 break;
                 
             case 'mssql':
