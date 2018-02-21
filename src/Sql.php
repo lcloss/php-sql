@@ -122,12 +122,12 @@ class Sql {
         $this->conn->beginTransaction();
     }
     
-    public function commit()
+    public function endTransaction()
     {
         $this->conn->commit();
     }
     
-    public function rollback()
+    public function cancelTransaction()
     {
         $this->conn->rollBack();
     }
